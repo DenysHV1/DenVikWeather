@@ -1,0 +1,46 @@
+body {
+	margin: 0;
+	font-family: 'Impact', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: -webkit-linear-gradient(90deg,#0000ff,#0000ff,#00ffff); 
+	background: linear-gradient(90deg,#0000ff,#0000ff,#00ffff);
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+	margin: 0;
+  }
+  
+  h1 {
+	text-align: center;
+	color: white;
+	margin-bottom: 20px;
+	font-size: 20px;
+  }
+  
+
+  
+  .visuallyHidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+  }
+  
+  .container {
+	max-width: 1920px;
+	padding: 0 20px;
+  }
+  
