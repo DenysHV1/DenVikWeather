@@ -17,15 +17,7 @@ body {
 	margin: 0;
   }
   
-  h1 {
-	text-align: center;
-	color: white;
-	margin-bottom: 20px;
-	font-size: 20px;
-  }
-  
 
-  
   .visuallyHidden {
 	position: absolute;
 	width: 1px;
@@ -40,7 +32,10 @@ body {
   }
   
   .container {
+	position: relative;
 	max-width: 1920px;
 	padding: 0 20px;
+	margin: 0 auto;
+	margin-bottom: 50px;
   }
   

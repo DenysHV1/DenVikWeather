@@ -1,8 +1,11 @@
+import s from './StoryList.module.css';
+
 import { useDispatch, useSelector } from "react-redux";
 import { selectDataStory } from "../../redux/selectors";
 import { useState } from "react";
 import { getWeatherByName } from "../../redux/operations";
 import { getCityName } from "../../redux/weatherReducer";
+import { IoIosArrowDropdown, IoIosArrowDropup } from 'react-icons/io';
 
 const StoryList = () => {
   const [toggleStory, setToggleStory] = useState(false);
@@ -22,19 +25,19 @@ const StoryList = () => {
 
   return (
     <>
-      <button onClick={handleShowStory}>Show story!</button>
+      <button onClick={handleShowStory} className={s.show_btn}>Show story! {toggleStory ? <IoIosArrowDropup /> : <IoIosArrowDropdown />}</button>
       {toggleStory && (
-        <ul>
+        <ul className={s.list}>
           {filteredStory?.length ? (
             filteredStory.map((city, idx) => (
               <li key={idx}>
-                <button onClick={() => handlerGetWeatherByName(city)}>
+                <button onClick={() => handlerGetWeatherByName(city)} className={s.list_btn}>
                   {city}
                 </button>
               </li>
             ))
           ) : (
-            <li>Story is Empty!</li>
+            <li className={s.empty}>Story is Empty!</li>
           )}
         </ul>
       )}

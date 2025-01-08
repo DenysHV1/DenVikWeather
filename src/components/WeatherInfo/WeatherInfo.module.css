@@ -1,0 +1,101 @@
+.list{
+	margin: 20px 0;
+}
+
+.listItem{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 20px;
+	min-height: 500px;
+	background-image: url(./weather-bg.png);
+	background-position: bottom;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border: 2px solid rgba(179, 179, 179, 0.677);
+	border-radius: 15px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.infoBlock{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+}
+
+.time{
+	position: absolute;
+	top: 35px;
+	right: 25px;
+	color: white;
+	font-style: italic;
+	font-size: 30px;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cloud{
+	position: absolute;
+	top: 15px;
+	left: 25px;
+	color: rgb(19, 157, 255);
+	width: 100px;
+	height: auto;
+	overflow: hidden;
+}
+
+.infoBlock1{
+	position: absolute;
+	left: 20px;
+	bottom: 100px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 25px;
+	color: white;
+	font-style: italic;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.infoBlock2{
+	position: absolute;
+	left: 20px;
+	bottom: 50px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 25px;
+	color: white;
+	font-style: italic;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.day{
+	position: absolute;
+	left: 30px;
+	bottom: 410px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 25px;
+	color: white;
+	font-style: italic;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.info_item{
+	color: aqua;
+}
+
+.title{
+	display: block;
+	background-color: rgba(19, 157, 255, 0.605);
+	padding: 20px;
+	text-align: start;
+	font-size: 36px;
+	font-weight: 400;
+	color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
