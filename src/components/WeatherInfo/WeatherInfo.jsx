@@ -22,11 +22,8 @@ const WeatherInfo = () => {
   const isError = useSelector(selectIsError);
   const isLoading = useSelector(selectIsLoading);
   const cityName = useSelector(selectCityName);
-  console.log(info);
 
-  const updatedCityName = `${cityName.charAt().toUpperCase()}${cityName
-    .slice(1, 20)
-    .toLowerCase()}`;
+  const updatedCityName = `${cityName?.slice(0,1).toUpperCase()}${cityName?.slice(1, 20).toLowerCase()}`;
 
   const selectCloud = (rain, snowfall) => {
     if (rain > snowfall && rain > 2.4) {
@@ -79,19 +76,19 @@ const WeatherInfo = () => {
             breakpoints={{
               320: {
                 slidesPerView: 1,
-                spaceBetween: 10,
+                spaceBetween: 3,
               },
               768: {
-                slidesPerView: 1,
-                spaceBetween: 15,
+                slidesPerView: 2,
+                spaceBetween: 3,
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 20,
+                spaceBetween: 3,
               },
               1440: {
-                slidesPerView: 3,
-                spaceBetween: 30,
+                slidesPerView: 4,
+                spaceBetween: 3,
               },
             }}
           >
