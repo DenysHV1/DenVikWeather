@@ -25,7 +25,7 @@ const StoryList = () => {
 
   return (
     <>
-      <button onClick={handleShowStory} className={s.show_btn}>History! {toggleStory ? <IoIosArrowDropup /> : <IoIosArrowDropdown />}</button>
+      <button onClick={handleShowStory} className={s.show_btn}>History {toggleStory ? <IoIosArrowDropup /> : <IoIosArrowDropdown />}</button>
       {toggleStory && (
         <ul className={s.list}>
           {filteredStory?.length ? (
