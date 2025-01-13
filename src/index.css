@@ -3,8 +3,9 @@ body {
 	font-family: 'Impact', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background: -webkit-linear-gradient(90deg,#0000ff,#0000ff,#00ffff); 
-	background: linear-gradient(90deg,#0000ff,#0000ff,#00ffff);
+	/* background: -webkit-linear-gradient(90deg,#0000ff,#0000ff,#00ffff); 
+	background: linear-gradient(90deg,#0000ff,#0000ff,#00ffff); */
+	background: -webkit-linear-gradient(90deg,#77408e,#72339a,#6925a7,#5915b5,#3d03c4); /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(90deg,#77408e,#72339a,#6925a7,#5915b5,#3d03c4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   
   h1,
