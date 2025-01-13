@@ -8,7 +8,7 @@ import {
 } from "../../redux/selectors";
 import Loader from "../Loader/Loader";
 import { MdOutlineCloud } from "react-icons/md";
-import { LiaCloudRainSolid } from "react-icons/lia";
+import { LiaCloudRainSolid, LiaCloudSunRainSolid } from "react-icons/lia";
 import { BsCloudSnow } from "react-icons/bs";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,6 +16,9 @@ import { Navigation, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { FiSun } from "react-icons/fi";
+import { TiWeatherPartlySunny } from "react-icons/ti";
+import { useState } from "react";
 
 const WeatherInfo = () => {
   const info = useSelector(selectData);
@@ -23,17 +26,27 @@ const WeatherInfo = () => {
   const isLoading = useSelector(selectIsLoading);
   const cityName = useSelector(selectCityName);
 
-  const updatedCityName = `${cityName?.slice(0,1).toUpperCase()}${cityName?.slice(1, 20).toLowerCase()}`;
+  const updatedCityName = `${cityName.slice(0, 1).toUpperCase()}${cityName
+    .slice(1, 20)
+    .toLowerCase()}`;
 
-  const selectCloud = (rain, snowfall) => {
-    if (rain > snowfall && rain > 2.4) {
-      return <LiaCloudRainSolid className={s.cloud} />;
-    } else if (snowfall > rain && snowfall > 2.4) {
-      return <BsCloudSnow className={s.cloud} />;
-    } else {
-      return <MdOutlineCloud className={s.cloud} />;
-    }
-  };
+    const getCloudIcon = (rain, snowfall, cloud_cover, temp) => {
+      if (snowfall > 0.1) {
+        return <BsCloudSnow className={s.cloud} title="Snow" />;
+      } else if (rain > 1) {
+        return <LiaCloudRainSolid className={s.cloud} title="Rain" />;
+      } else if (cloud_cover > 70) {
+        return <MdOutlineCloud className={s.cloud} title="Cloudy" />;
+      } else if (cloud_cover > 30) {
+        return <TiWeatherPartlySunny className={s.cloud} title="Partly Cloudy" />;
+      } else if (temp > 30) {
+        return <FiSun className={s.sun} title="Sunny" />;
+      } else {
+        return <FiSun className={s.sun} title="Clear Sky" />;
+      }
+    };
+
+  console.log(info);
 
   const fixTime = (time) => {
     switch (Number(time)) {
@@ -56,7 +69,7 @@ const WeatherInfo = () => {
       case 48:
         return "00";
       default:
-        return "00"
+        return "00";
     }
   };
 
@@ -76,40 +89,48 @@ const WeatherInfo = () => {
             breakpoints={{
               320: {
                 slidesPerView: 1,
-                spaceBetween: 3,
+                spaceBetween: 1,
               },
               768: {
-                slidesPerView: 2,
-                spaceBetween: 3,
+                slidesPerView: 3,
+                spaceBetween: 1,
               },
               1024: {
-                slidesPerView: 3,
-                spaceBetween: 3,
+                slidesPerView: 4,
+                spaceBetween: 1,
               },
               1440: {
-                slidesPerView: 4,
-                spaceBetween: 3,
+                slidesPerView: 6,
+                spaceBetween: 1,
               },
             }}
           >
             {info?.length > 0 ? (
-              info.map(({ time, temp, rain, snowfall, speed }, idx) => (
-                <SwiperSlide key={`item${idx}`} className={s.listItem}>
-                  {selectCloud(rain, snowfall)}
-                  <p className={s.time}>{Number(time) > 23 ? `${fixTime(time)}:00`: `${time}:00`}</p>
-                  <p className={s.day}>{Number(time) > 23 ? "Tomorrow" : "Today"}</p>
-                  <div className={s.infoBlock1}>
-                    <p>Temperature: </p>
-                    <p className={s.info_item}>{`${temp} ℃`}</p>
-                  </div>
-                  <div className={s.infoBlock2}>
-                    <p>Wind speed: </p>
-                    <p className={s.info_item}>{`${((speed * 1000) / 3600)
-                      .toString()
-                      .slice(0, 3)} m/c`}</p>
-                  </div>
-                </SwiperSlide>
-              ))
+              info.map(
+                ({ time, temp, rain, snowfall, speed, cloud_cover }, idx) => (
+                  <SwiperSlide key={`item${idx}`} className={s.listItem}>
+                    <div className={s.icon}>
+                      {getCloudIcon(rain, snowfall, cloud_cover, temp)}
+                    </div>
+                    <p className={s.time}>
+                      {Number(time) > 23 ? `${fixTime(time)}:00` : `${time}:00`}
+                    </p>
+                    <p className={s.day}>
+                      {Number(time) > 23 ? "Tomorrow" : "Today"}
+                    </p>
+                    <div className={s.infoBlock1}>
+                      <p>Temperature: </p>
+                      <p className={s.info_item}>{`${temp} ℃`}</p>
+                    </div>
+                    <div className={s.infoBlock2}>
+                      <p>Wind speed: </p>
+                      <p className={s.info_item}>{`${((speed * 1000) / 3600)
+                        .toString()
+                        .slice(0, 3)} m/c`}</p>
+                    </div>
+                  </SwiperSlide>
+                )
+              )
             ) : (
               <li>Sorry we don't have info about this city!</li>
             )}
