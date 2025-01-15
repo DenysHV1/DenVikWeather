@@ -30,7 +30,7 @@ const WeatherInfo = () => {
     .slice(1, 20)
     .toLowerCase()}`;
 
-    const getCloudIcon = (rain, snowfall, cloud_cover, temp) => {
+    const getCloudIcon = (rain, snowfall, cloud_cover, temp, time) => {
       if (snowfall > 0.1) {
         return <BsCloudSnow className={s.cloud} title="Snow" />;
       } else if (rain > 1) {
@@ -39,10 +39,10 @@ const WeatherInfo = () => {
         return <MdOutlineCloud className={s.cloud} title="Cloudy" />;
       } else if (cloud_cover > 30) {
         return <TiWeatherPartlySunny className={s.cloud} title="Partly Cloudy" />;
-      } else if (temp > 30) {
+      } else if (temp > 20 && time < 16) {
         return <FiSun className={s.sun} title="Sunny" />;
       } else {
-        return <FiSun className={s.sun} title="Clear Sky" />;
+        return <MdOutlineCloud className={s.cloud} title="Cloudy" />;
       }
     };
 
@@ -110,7 +110,7 @@ const WeatherInfo = () => {
                 ({ time, temp, rain, snowfall, speed, cloud_cover }, idx) => (
                   <SwiperSlide key={`item${idx}`} className={s.listItem}>
                     <div className={s.icon}>
-                      {getCloudIcon(rain, snowfall, cloud_cover, temp)}
+                      {getCloudIcon(rain, snowfall, cloud_cover, temp, time)}
                     </div>
                     <p className={s.time}>
                       {Number(time) > 23 ? `${fixTime(time)}:00` : `${time}:00`}
