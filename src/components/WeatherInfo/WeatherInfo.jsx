@@ -19,6 +19,7 @@ import "swiper/css/pagination";
 import { FiSun } from "react-icons/fi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { useState } from "react";
+import ChartBlock from "../ChartBlock/ChartBlock";
 
 const WeatherInfo = () => {
   const info = useSelector(selectData);
@@ -79,6 +80,7 @@ const WeatherInfo = () => {
       {!isError ? (
         <>
           <h1 className={s.title}>{updatedCityName}</h1>
+          <ChartBlock/>
           <Swiper
             className={s.list}
             cssMode={true}
