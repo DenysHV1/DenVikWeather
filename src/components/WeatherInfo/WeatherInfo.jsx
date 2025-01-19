@@ -102,7 +102,7 @@ const WeatherInfo = () => {
                 spaceBetween: 1,
               },
               1440: {
-                slidesPerView: 6,
+                slidesPerView: 5,
                 spaceBetween: 1,
               },
             }}
